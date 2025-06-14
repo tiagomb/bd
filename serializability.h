@@ -3,6 +3,8 @@
 
 #include "schedule.h"
 
+#define MAX_UNIQUE_TIDS 15
+
 // Verifica se um agendamento é serializável por conflito e se é equivalente por visão.
 void checkSerializability(schedule_t *schedule);
 

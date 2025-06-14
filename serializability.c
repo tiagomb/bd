@@ -11,7 +11,7 @@ void checkSerializability(schedule_t *schedule) {
 
     int maxTid = -1;
     bool tidsEnvolved[MAX_TID_VAL] = {false};
-    int uniqueTids[MAX_TID_VAL];
+    int uniqueTids[MAX_UNIQUE_TIDS];
     int numUniqueTids = 0;
     
     transaction_t* opNode = schedule->transactions->head;
@@ -19,7 +19,7 @@ void checkSerializability(schedule_t *schedule) {
         if (opNode->id >= 0 && opNode->id < MAX_TID_VAL) {
             if (!tidsEnvolved[opNode->id]) {
                 tidsEnvolved[opNode->id] = true;
-                if (numUniqueTids < MAX_TID_VAL) {
+                if (numUniqueTids < MAX_UNIQUE_TIDS) {
                     uniqueTids[numUniqueTids++] = opNode->id;
                 }
             }
@@ -43,7 +43,7 @@ void checkSerializability(schedule_t *schedule) {
     
     strcpy(schedule->serializable, "NS");
     
-    if (numUniqueTids > MAX_TID_VAL) {
+    if (numUniqueTids > MAX_UNIQUE_TIDS) {
          fprintf(stderr, "Aviso: Excesso de transacoes unicas para o teste de visao por permutacao (limite: %d).\n", MAX_TID_VAL);
          strcpy(schedule->equivalent, "NV");
          return;

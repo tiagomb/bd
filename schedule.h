@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#define MAX_TID_VAL 15
+#define MAX_TID_VAL 100
 #define MAX_ATTRIB_VAL 128
 
 typedef struct transaction_s {
